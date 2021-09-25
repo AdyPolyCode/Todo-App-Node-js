@@ -48,4 +48,4 @@ $ npm run dev
 
 ### License
 You can find the license by clicking on the link below or open from the repository.
-[Here](License)
+[Here](https://github.com/AdyPolyCode/Todo-App-Node-js/blob/main/LICENSE)
