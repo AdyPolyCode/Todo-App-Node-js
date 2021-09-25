@@ -13,6 +13,7 @@
 ### General-Information
 A basic task assigner (todo) node-js based server-side application. It can by used with many operations whether it is addition, deletion or update.
 Specifically I used fastify framework for this project to learn new stuff. Also managed to create a decent mongo-db.
+
 ![Todo Logo](https://i.pinimg.com/originals/f7/3b/4e/f73b4e244b255face5fda25c72905c98.png)
 
 ### Project-Objectives
