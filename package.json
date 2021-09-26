@@ -1,0 +1,32 @@
+{
+  "name": "todo-app-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdyPolyCode/Todo-App-Node-js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AdyPolyCode/Todo-App-Node-js/issues"
+  },
+  "homepage": "https://github.com/AdyPolyCode/Todo-App-Node-js#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "fastify": "^3.21.6",
+    "fastify-plugin": "^3.0.0",
+    "mongoose": "^6.0.7",
+    "node-geocoder": "^3.27.0",
+    "pino-pretty": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}
