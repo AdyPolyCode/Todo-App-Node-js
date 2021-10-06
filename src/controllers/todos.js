@@ -1,6 +1,5 @@
 const Todos = require('../models/Todos');
 const CustomError = require('../utils/customError');
-const reqParser = require('../utils/reqParser');
 
 
 exports.getTodos = async function(req, res){
@@ -29,9 +28,7 @@ exports.getTodo = async function(req, res){
 
 
 exports.createTodo = async function(req, res){
-    const data = reqParser(req)
-
-    const todo = await Todos.create(data)
+    const todo = await Todos.create(req.body)
 
     res.code(201).send({
         data: todo,

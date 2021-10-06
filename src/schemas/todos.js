@@ -4,8 +4,7 @@ const { getTodos,
         updateTodo,
         updateTodos,
         deleteTodo } = require('../controllers/todos');
-const { positionResolver,
-        positionManager,
+const { positionManager,
         hasData } = require('../middlewares/hooks');
 
 
@@ -101,7 +100,6 @@ const createOne = {
             }
         }
     },
-    onRequest: positionResolver,
     handler: createTodo
 };
 

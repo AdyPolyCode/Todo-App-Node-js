@@ -2,14 +2,6 @@ const Todo = require('../models/Todos');
 const CustomError = require('../utils/customError');
 
 
-// resolve position number for todos
-exports.positionResolver = async function(req, res){
-    const todo = await Todo.getLastTodo()
-
-    return todo ? req.nextNumber = todo['taskPosition'] + 1 : req
-};
-
-
 // get todo data from body
 exports.positionManager = async function(req, res){
     if(req.body.length > 2 || req.body.length < 2){

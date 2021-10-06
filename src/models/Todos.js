@@ -76,6 +76,13 @@ schema.pre('validate', function(done){
 });
 
 schema.pre('save', async function(){
+    const lastTodo = await this.constructor.findOne({}).sort({ taskPosition: 'desc' })
+    const nextNum = lastTodo?.taskPosition
+
+    this.taskPosition = nextNum == undefined ? 0 : nextNum + 1
+});
+
+schema.pre('save', async function(){
     const loc = await geocoder.geocode(this.address)
 
     this.location = {
