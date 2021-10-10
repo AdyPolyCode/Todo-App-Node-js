@@ -2,20 +2,25 @@
     "root": true,
     "extends": [
         "airbnb-base",
-        "plugin:node/recommended"
+        "plugin:node/recommended",
+        "plugin:import/recommended"
     ],
     "env": {
         "commonjs": true,
         "node": true
     },
     "rules": {
-        "quotes": ["warn", "double"],
+        "quotes": "off",
+        "comma-dangle": "off",
         "semi": ["warn", "always"],
         "linebreak-style": ["error", "windows"],
+        "arrow-parens": "off",
+        "no-console": "off",
         "no-unused-vars": "warn",
         "no-process-exit": "off",
         "node/exports-style": ["error", "module.exports"],
         "node/no-unsupported-features/es-syntax": "off",
+        "import/order": "error",
         "arrow-spacing": "error",
         "multiline-ternary": ["error", "always"],
         "indent": "off"
