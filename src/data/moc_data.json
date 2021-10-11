@@ -1,29 +1,29 @@
 [
     {
-        "taskCaption":"Buy Bananas",
-        "taskContent":{
-            "withWho":"Dad",
-            "forWhat":"Dessert"
+        "taskCaption": "Buy Bananas",
+        "taskContent": {
+            "withWho": "Dad",
+            "forWhat": "Dessert"
         },
-        "executionDate":"2021-12-12",
+        "executionDate": "2021-12-12",
         "address": "bratislava slovakia"
     },
     {
-        "taskCaption":"Buy Figs",
-        "taskContent":{
-            "withWho":"Friend",
-            "forWhat":"Just4Fun"
+        "taskCaption": "Buy Figs",
+        "taskContent": {
+            "withWho": "Friend",
+            "forWhat": "Just4Fun"
         },
-        "executionDate":"2022-01-02",
+        "executionDate": "2022-01-02",
         "address": "budapest hungary"
     },
     {
-        "taskCaption":"Buy Wine",
-        "taskContent":{
-            "withWho":"Colleague",
-            "forWhat":"Party"
+        "taskCaption": "Buy Wine",
+        "taskContent": {
+            "withWho": "Colleague",
+            "forWhat": "Party"
         },
-        "executionDate":"2020-07-11",
+        "executionDate": "2020-07-11",
         "address": "tokio japan"
     }
 ]
