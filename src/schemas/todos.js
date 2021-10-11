@@ -1,42 +1,42 @@
-const { getTodos,
-        getTodo,
-        createTodo,
-        updateTodo,
-        updateTodos,
-        deleteTodo } = require('../controllers/todos');
-const { positionManager,
-        hasData } = require('../middlewares/hooks');
-
+const {
+    getTodos,
+    getTodo,
+    createTodo,
+    updateTodo,
+    swapTodos,
+    deleteTodo,
+} = require("../controllers/todos");
+const { hasData } = require("../middlewares/hooks");
 
 // validation object
 const propertyValidationObj = {
-    taskCaption: { type: 'string' },
+    taskCaption: { type: "string" },
     taskContent: {
-        type: 'object',
+        type: "object",
         properties: {
-            withWho: { type: 'string' },
-            forWhat: { type: 'string' }
-        }
+            withWho: { type: "string" },
+            forWhat: { type: "string" },
+        },
     },
-    executionDate: { type: 'string' },
-    address: { type: 'string' }
-}
+    executionDate: { type: "string" },
+    address: { type: "string" },
+};
 
 // get todos validator schema
 const getAll = {
     schema: {
         response: {
             200: {
-                type: 'object',
+                type: "object",
                 properties: {
-                    data: { type: 'array' },
-                    message: { type: 'string' },
-                    count: { type: 'number' }
-                }
-            }
-        }
+                    data: { type: "array" },
+                    message: { type: "string" },
+                    count: { type: "number" },
+                },
+            },
+        },
     },
-    handler: getTodos
+    handler: getTodos,
 };
 
 // get todo by id validator schema
@@ -44,114 +44,109 @@ const getOne = {
     schema: {
         response: {
             200: {
-                type: 'object',
+                type: "object",
                 properties: {
                     data: {
-                        type: 'object',
+                        type: "object",
                         properties: {
                             ...propertyValidationObj,
                             location: {
-                                type: 'object',
+                                type: "object",
                                 properties: {
-                                    coordinates: { type: 'array' },
-                                    city: { type: 'string' },
-                                    country: { type: 'string' }
-                                }
+                                    coordinates: { type: "array" },
+                                    city: { type: "string" },
+                                    country: { type: "string" },
+                                },
                             },
-                            taskPosition: { type: 'number' },
-                            isCompleted: { type: 'boolean' },
-                            createdAt: { type: 'string' },
-                            updatedAt: { type: 'string' }
-                        }
+                            taskPosition: { type: "number" },
+                            isCompleted: { type: "boolean" },
+                            createdAt: { type: "string" },
+                            updatedAt: { type: "string" },
+                        },
                     },
-                    message: { type: 'string' }
-                }
-            }
-        }
+                    message: { type: "string" },
+                },
+            },
+        },
     },
-    handler: getTodo
+    handler: getTodo,
 };
 
 // post todo validator schema
 const createOne = {
     schema: {
         body: {
-            type: 'object',
-            properties: {...propertyValidationObj},
-            required: [
-                        'taskCaption',
-                        'taskContent',
-                        'executionDate',
-                        'address']
+            type: "object",
+            properties: { ...propertyValidationObj },
+            required: ["taskCaption", "taskContent", "executionDate"],
         },
         response: {
             201: {
-                type: 'object',
+                type: "object",
                 properties: {
                     data: {
-                        type: 'object',
+                        type: "object",
                         properties: {
-                            _id: { type: 'string' },
-                            taskCaption: { type: 'string' }
-                        }
+                            _id: { type: "string" },
+                            taskCaption: { type: "string" },
+                        },
                     },
-                    message: { type: 'string' }
-                }
-            }
-        }
+                    message: { type: "string" },
+                },
+            },
+        },
     },
-    handler: createTodo
+    handler: createTodo,
 };
 
 // put todo by id validator schema
 const updateOne = {
     schema: {
         body: {
-            type: 'object',
-            properties: {  }
+            type: "object",
+            properties: {},
         },
         response: {
             200: {
-                type: 'object',
+                type: "object",
                 properties: {
                     data: {
-                        type: 'object',
-                        properties: propertyValidationObj
+                        type: "object",
+                        properties: propertyValidationObj,
                     },
-                    message: { type: 'string' }
-                }
-            }
-        }
+                    message: { type: "string" },
+                },
+            },
+        },
     },
     preValidation: hasData,
-    handler: updateTodo
+    handler: updateTodo,
 };
 
-// put every todo by id validator schema
+// put todos by swap
 const updateMany = {
     schema: {
         body: {
-            type: 'array',
+            type: "array",
             items: {
-                type: 'object',
+                type: "object",
                 properties: {
-                    _id: { type: 'string'},
-                    taskPosition: { type: 'number' }
+                    _id: { type: "string" },
+                    taskPosition: { type: "number" },
                 },
-                required: ['_id', 'taskPosition']
-            }
+                required: ["_id", "taskPosition"],
+            },
         },
         response: {
             200: {
-                type: 'object',
+                type: "object",
                 properties: {
-                    message: { type: 'string' }
-                }
-            }
-        }
+                    message: { type: "string" },
+                },
+            },
+        },
     },
-    preHandler: positionManager,
-    handler: updateTodos
+    handler: swapTodos,
 };
 
 // delete todo by id validator schema
@@ -159,21 +154,19 @@ const deleteOne = {
     schema: {
         response: {
             200: {
-                type: 'object',
+                type: "object",
                 properties: {
                     data: {
-                        type: 'object',
-                        properties: propertyValidationObj
+                        type: "object",
+                        properties: propertyValidationObj,
                     },
-                    message: { type: 'string' }
-                }
-            }
-        }
+                    message: { type: "string" },
+                },
+            },
+        },
     },
-    handler: deleteTodo
+    handler: deleteTodo,
 };
-
-
 
 module.exports = {
     getAll,
@@ -181,5 +174,5 @@ module.exports = {
     createOne,
     updateOne,
     updateMany,
-    deleteOne
+    deleteOne,
 };
