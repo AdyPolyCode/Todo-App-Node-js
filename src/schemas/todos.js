@@ -25,6 +25,8 @@ const propertyValidationObj = {
 // get todos validator schema
 const getAll = {
     schema: {
+        description: "Get all Todos",
+        tags: ["Todos"],
         response: {
             200: {
                 type: "object",
@@ -42,6 +44,17 @@ const getAll = {
 // get todo by id validator schema
 const getOne = {
     schema: {
+        description: "Get single Todo",
+        tags: ["Todos"],
+        params: {
+            type: "object",
+            properties: {
+                todoId: {
+                    type: "string",
+                    description: "Todo ID",
+                },
+            },
+        },
         response: {
             200: {
                 type: "object",
@@ -67,6 +80,22 @@ const getOne = {
                     message: { type: "string" },
                 },
             },
+            400: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
+                },
+            },
+            404: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
+                },
+            },
         },
     },
     handler: getTodo,
@@ -75,6 +104,8 @@ const getOne = {
 // post todo validator schema
 const createOne = {
     schema: {
+        description: "Create single Todo",
+        tags: ["Todos"],
         body: {
             type: "object",
             properties: { ...propertyValidationObj },
@@ -102,6 +133,17 @@ const createOne = {
 // put todo by id validator schema
 const updateOne = {
     schema: {
+        description: "Update single Todo",
+        tags: ["Todos"],
+        params: {
+            type: "object",
+            properties: {
+                todoId: {
+                    type: "string",
+                    description: "Todo ID",
+                },
+            },
+        },
         body: {
             type: "object",
             properties: {},
@@ -117,6 +159,22 @@ const updateOne = {
                     message: { type: "string" },
                 },
             },
+            400: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
+                },
+            },
+            404: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
+                },
+            },
         },
     },
     preValidation: hasData,
@@ -126,6 +184,8 @@ const updateOne = {
 // put todos by swap
 const updateMany = {
     schema: {
+        description: "Swap Todos",
+        tags: ["Todos"],
         body: {
             type: "array",
             items: {
@@ -152,6 +212,17 @@ const updateMany = {
 // delete todo by id validator schema
 const deleteOne = {
     schema: {
+        description: "Delete single Todo",
+        tags: ["Todos"],
+        params: {
+            type: "object",
+            properties: {
+                todoId: {
+                    type: "string",
+                    description: "Todo ID",
+                },
+            },
+        },
         response: {
             200: {
                 type: "object",
@@ -161,6 +232,22 @@ const deleteOne = {
                         properties: propertyValidationObj,
                     },
                     message: { type: "string" },
+                },
+            },
+            400: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
+                },
+            },
+            404: {
+                type: "object",
+                properties: {
+                    message: {
+                        type: "string",
+                    },
                 },
             },
         },
