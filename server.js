@@ -2,11 +2,14 @@ require("colors");
 require("dotenv").config({ path: ".env" });
 const fastify = require("fastify")({ logger: { prettyPrint: true } });
 
-// register route plugins
+// plugin for swagger documentation
+fastify.register(require("./src/utils/swagger"));
+
+// route plugins
 fastify.register(require("./src/db/dbConnect"));
 fastify.register(require("./src/routes/todos"), { prefix: "/api/todos" });
 
-// register error handler instead of default
+// error handler instead of default
 fastify.setErrorHandler(require("./src/middlewares/errorHandler"));
 
 // server listening for requests
