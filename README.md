@@ -61,5 +61,4 @@ $ npm run dev
 ### License
 
 You can find the license by clicking on the link below or open from the repository.
-
-[Here](https://github.com/AdyPolyCode/todo-app-node-js/blob/schemaUpdates/LICENSE)
+[Here](https://github.com/AdyPolyCode/Todo-App-Node-js/blob/main/LICENSE)
