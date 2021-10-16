@@ -10,7 +10,7 @@ module.exports = fp(function (fastify, options, done) {
                 version: "0.1.0",
             },
             externalDocs: {
-                url: "https://swagger.io",
+                url: "https://app.swaggerhub.com/apis-docs/AdyPolyCode/todos-API/0.1",
                 description: "Find more info here",
             },
             host: "localhost:5555",
