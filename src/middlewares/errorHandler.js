@@ -6,7 +6,12 @@ function errorHandler(err, req, res) {
 
     // log error in development
     if (process.env.FASTY_ENV === "dev") {
-        console.log(err);
+        console.log(err.validation);
+    }
+
+    // validation from schema
+    if (err.validation) {
+        error.status = 400;
     }
 
     // invalid object id for mongoose
