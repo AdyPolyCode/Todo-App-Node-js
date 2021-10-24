@@ -38,7 +38,11 @@ Specifically I used fastify framework for this project to learn new stuff. Also 
 
 Swagger based documentation
 
+Internal:
 Url: http://localhost:5555/documentation
+
+External:
+Url: https://app.swaggerhub.com/apis-docs/AdyPolyCode/todos-API/0.1
 
 ### Technologies
 
@@ -57,6 +61,8 @@ $ npm install
 $ npm run dev
 
 ```
+
+> path for the env file can be found in .gitignore
 
 ### License
 
