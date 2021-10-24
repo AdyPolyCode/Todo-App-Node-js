@@ -1,0 +1,11 @@
+# dependecy directory
+/node_modules
+
+# environmental variable file
+.env
+
+# .env file path - root directory
+./
+
+# code formatter file
+.prettierrc
