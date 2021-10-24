@@ -15,7 +15,7 @@ exports.getTodo = async function (req, res) {
     const todo = await Todos.findById(req.params.todoId);
 
     if (!todo) {
-        return new CustomError("Item Not Found", 404);
+        return new CustomError("Todo Not Found", 404);
     }
 
     res.code(200).send({
