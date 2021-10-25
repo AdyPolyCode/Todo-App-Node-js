@@ -4,8 +4,5 @@
 # environmental variable file
 .env
 
-# .env file path - root directory
-./
-
 # code formatter file
 .prettierrc
