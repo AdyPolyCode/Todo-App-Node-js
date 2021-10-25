@@ -62,8 +62,6 @@ $ npm run dev
 
 ```
 
-> path for the env file can be found in .gitignore
-
 ### License
 
 You can find the license by clicking on the link below or open from the repository.
