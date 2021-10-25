@@ -39,7 +39,7 @@ Specifically I used fastify framework for this project to learn new stuff. Also 
 Swagger based documentation
 
 Internal:
-Url: http://localhost:5555/documentation
+Url: http://localhost:{PORT}/documentation
 
 External:
 Url: https://app.swaggerhub.com/apis-docs/AdyPolyCode/todos-API/0.1
