@@ -73,7 +73,7 @@ schema.pre("save", async function () {
         const loc = await geocoder.geocode(this.address);
 
         this.location = {
-            coordinates: [loc[0].longitude, loc[0].latitude],
+            coordinates: [loc[0].latitude, loc[0].longitude],
             country: loc[0].country,
             city: loc[0].city,
         };
