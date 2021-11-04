@@ -1,11 +1,11 @@
 const {
-    getAll,
     getOne,
+    getAll,
     createOne,
     updateOne,
     updateMany,
     deleteOne,
-} = require("../schemas/todos");
+} = require("../schemas");
 
 async function todoRoutes(fastify, options, done) {
     // get all todos
