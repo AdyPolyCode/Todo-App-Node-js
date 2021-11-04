@@ -1,27 +1,34 @@
+const winstonLog = require("../utils/logger");
 const CustomError = require("../utils/customError");
 
+const errors = {
+    11000: {
+        message: "Todo already exists",
+        status: 400,
+    },
+    CastError: {
+        message: "Invalid Object Id",
+        status: 400,
+    },
+};
+
 function errorHandler(err, req, res) {
-    let error = { ...err };
-    error.message = err.message;
+    let error = errors[err.code || err.name] || {};
 
     // log error in development
     if (process.env.FASTY_ENV === "dev") {
-        console.log(err.validation);
+        winstonLog.error(err.stack);
+    }
+
+    if (err instanceof CustomError) {
+        error = { ...err };
+        error.message = err.message;
     }
 
     // validation from schema
     if (err.validation) {
+        error.message = err.validation[0].message;
         error.status = 400;
-    }
-
-    // invalid object id for mongoose
-    if (err.name === "CastError") {
-        error = new CustomError("Invalid Object Id", 400);
-    }
-
-    // cannot create duplicate items
-    if (err.code === 11000) {
-        error = new CustomError("Todo already exists", 400);
     }
 
     res.code(error.status || 500).send({
