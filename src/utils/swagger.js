@@ -13,7 +13,7 @@ module.exports = fp(function (fastify, options, done) {
                 url: "https://app.swaggerhub.com/apis-docs/AdyPolyCode/todos-API/0.1",
                 description: "Find more info here",
             },
-            host: "localhost:5555",
+            host: `localhost:${process.env.FASTY_PORT}`,
             schemes: ["http"],
             consumes: ["application/json"],
             produces: ["application/json"],
