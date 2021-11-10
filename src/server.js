@@ -14,28 +14,26 @@ fastify.setErrorHandler(require("./middlewares/errorHandler"));
 
 // server listening for requests
 const server = async () => {
-    try {
-        await fastify.ready((err) => {
-            if (err) {
-                console.log(err);
-            }
-            if (!err) {
-                console.log(
-                    "All plugins loaded successfully".bgWhite.black.bold
-                );
-            }
-        });
-        await fastify.listen(process.env.FASTY_PORT);
-    } catch (error) {
-        fastify.log.error(error.red.underline.bold);
-        process.exit(1);
-    }
+  try {
+    await fastify.ready((err) => {
+      if (err) {
+        console.log(err);
+      }
+      if (!err) {
+        console.log("All plugins loaded successfully".bgWhite.black.bold);
+      }
+    });
+    await fastify.listen(process.env.FASTY_PORT);
+  } catch (error) {
+    fastify.log.error(error.red.underline.bold);
+    process.exit(1);
+  }
 };
 
 server();
 
 // handle error in promises
 process.on("unhandledRejection", (reason, promise) => {
-    console.log("Unhandled Rejection: ", reason.stack);
-    process.exit(1);
+  console.log("Unhandled Rejection: ", reason.stack);
+  process.exit(1);
 });

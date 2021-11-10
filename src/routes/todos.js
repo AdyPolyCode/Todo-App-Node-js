@@ -1,32 +1,36 @@
 const {
-    getOne,
-    getAll,
-    createOne,
-    updateOne,
-    updateMany,
-    deleteOne,
+  getOne,
+  getAll,
+  createOne,
+  updateOne,
+  updateMany,
+  deleteOne,
 } = require("../schemas");
 
 async function todoRoutes(fastify, options, done) {
-    // get all todos
-    fastify.get("/", getAll);
+  fastify.register(require("fastify-cors"), {
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  });
+  // get all todos
+  fastify.get("/", getAll);
 
-    // get single todo
-    fastify.get("/:todoId", getOne);
+  // get single todo
+  fastify.get("/:todoId", getOne);
 
-    // create single todo
-    fastify.post("/", createOne);
+  // create single todo
+  fastify.post("/", createOne);
 
-    // update single todo
-    fastify.put("/:todoId", updateOne);
+  // update single todo
+  fastify.put("/:todoId", updateOne);
 
-    // update todos
-    fastify.patch("/", updateMany);
+  // update todos
+  fastify.patch("/", updateMany);
 
-    // delete single todo
-    fastify.delete("/:todoId", deleteOne);
+  // delete single todo
+  fastify.delete("/:todoId", deleteOne);
 
-    done();
+  done();
 }
 
 module.exports = todoRoutes;
