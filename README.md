@@ -10,11 +10,15 @@
 
 2. [Project-Objectives](#project-objectives)
 
-3. [Features](#features)
+3. [Documentation](#documentation)
 
-4. [Technologies](#technologies)
+4. [Features](#features)
 
-5. [Setup](#setup)
+5. [Technologies](#technologies)
+
+6. [Setup](#setup)
+
+7. [License](#license)
 
 ### General-Information
 
@@ -26,13 +30,13 @@ Specifically I used fastify framework for this project to learn new stuff. Also 
 
 ### Project-Objectives
 
--   Used Git version control
+- Used Git version control
 
--   Used command line
+- Used command line
 
--   Data storage in Mongo-DB (Mongoose ODM)
+- Data storage in Mongo-DB (Mongoose ODM)
 
--   Implemented CRUD operations
+- Implemented CRUD operations
 
 ### Documentation
 
@@ -43,6 +47,14 @@ Url: http://localhost:{PORT}/documentation
 
 External:
 Url: https://app.swaggerhub.com/apis-docs/AdyPolyCode/todos-API/0.1
+
+### Features
+
+- RESTful API
+- CommonJS
+- Request body validator
+- Custom error response
+- API documentation
 
 ### Technologies
 
