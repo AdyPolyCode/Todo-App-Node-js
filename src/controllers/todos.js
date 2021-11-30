@@ -49,28 +49,30 @@ exports.updateTodo = async function (req, res) {
 };
 
 exports.swapTodos = async function (req, res) {
-    let firstTodo;
-    let secondTodo;
+    const { draggedId, droppedId } = req.body;
 
-    [firstTodo, secondTodo] = [...req.body];
+    const firstTodo = await Todos.findById(draggedId);
+    const secondTodo = await Todos.findById(droppedId);
 
-    [firstTodo.taskPosition, secondTodo.taskPosition] = [
-        secondTodo.taskPosition,
-        firstTodo.taskPosition,
-    ];
-
-    firstTodo = await Todos.findByIdAndUpdate(
-        { _id: firstTodo._id },
-        { taskPosition: firstTodo.taskPosition }
-    );
-    secondTodo = await Todos.findByIdAndUpdate(
-        { _id: secondTodo._id },
-        { taskPosition: secondTodo.taskPosition }
-    );
+    const firstPosition = firstTodo.taskPosition;
+    const secondPosition = secondTodo.taskPosition;
 
     if (!firstTodo || !secondTodo) {
         return new CustomError("Todo Not Found", 404);
     }
+
+    await Todos.updateOne(
+        { _id: draggedId },
+        {
+            taskPosition: secondPosition,
+        }
+    );
+    await Todos.updateOne(
+        { _id: droppedId },
+        {
+            taskPosition: firstPosition,
+        }
+    );
 
     res.code(200).send({
         message: "Todos successfully updated",
