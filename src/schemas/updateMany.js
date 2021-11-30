@@ -8,20 +8,16 @@ module.exports = {
             "Swap Todos, drag and drop the Todos so the position will be replaced one of each other. Todo Id and position must be provided from the front-end.Requested Todo objects must be in a list with Id. If one object is missing from the list || the list has more than two objects, then error will be send.",
         tags: ["Todos"],
         body: {
-            type: "array",
-            items: {
-                type: "object",
-                properties: {
-                    _id: { type: "string" },
-                },
-                required: ["_id"],
+            type: "object",
+            properties: {
+                draggedId: { type: "string" },
+                droppedId: { type: "string" },
             },
-            example: [
-                {
-                    draggedId: "string",
-                    droppedId: "string",
-                },
-            ],
+            required: ["draggedId", "droppedId"],
+            example: {
+                draggedId: "string",
+                droppedId: "string",
+            },
         },
         response: {
             200: {
