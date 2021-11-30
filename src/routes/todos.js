@@ -10,7 +10,7 @@ const {
 async function todoRoutes(fastify, options, done) {
   fastify.register(require("fastify-cors"), {
     origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   });
   // get all todos
   fastify.get("/", getAll);
